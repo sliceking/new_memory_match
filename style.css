@@ -91,9 +91,7 @@ header > div{
     border:3px solid black;
     border-radius:10px;
 }
-.card > img:hover{
-    opacity:0;
-}
+
 button{
     font-family:Rockwell;
     color:red;
