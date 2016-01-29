@@ -29,8 +29,11 @@ $(document).ready(function(){
             console.log(c,d);
         }
     });
+    $('button').click(function(){
+        resetButton();
+        console.log('reset sent');
+    });
 });
-
 //this function compares the 2 selected cards and determines if they match or not and increment the match counter and attempts counter
 function compare(a,b){
     if(a==b){
@@ -38,25 +41,26 @@ function compare(a,b){
         $(c).removeClass('notFlipped');
         $(d).removeClass('notFlipped');
         match_counter++;
+        attempts++;
+        attemptDisplay();
         matchDisplay();
     }else{
         console.log('no match');
         attempts++;
+        attemptDisplay();
         failDisplay();
         setTimeout(function(){
             $('.notFlipped').show();
         }, 1000);
     }
 }
-
-
+//this function will display a fail message when a non-match happens
 function failDisplay(){
     $('.heading h1').text('Super Fail.');
     setTimeout(function(){
         $('.heading h1').text('Memory Match Mania!');
     },1000);
 }
-
 //this function displays if the user has a matched pair
 function matchDisplay(){
     $('.heading h1').text('Nice Match!');
@@ -65,11 +69,20 @@ function matchDisplay(){
     },1000);
     winCheck();
 }
-
-//this function comparees the match counter and total possible matches to display a win message
+//this function compares the match counter and total possible matches to display a win message
 function winCheck(){
     if (match_counter == total_possible_matches){
         $('.heading h1').text('You\'re a Winner!');
     }
 }
+//this function control the reset button to show all backs of the cards
+function resetButton(){
+    console.log('reset recieved');
+    $('.back').show();
+    match_counter = null;
+    attempts = null;
+}
 
+function attemptDisplay(){
+    $('.attempts .value').text(attempts);
+}
