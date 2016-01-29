@@ -38,18 +38,38 @@ function compare(a,b){
         $(c).removeClass('notFlipped');
         $(d).removeClass('notFlipped');
         match_counter++;
-        winCheck();
+        matchDisplay();
     }else{
         console.log('no match');
         attempts++;
+        failDisplay();
         setTimeout(function(){
             $('.notFlipped').show();
         }, 1000);
     }
 }
+
+
+function failDisplay(){
+    $('.heading h1').text('Super Fail.');
+    setTimeout(function(){
+        $('.heading h1').text('Memory Match Mania!');
+    },1000);
+}
+
+//this function displays if the user has a matched pair
+function matchDisplay(){
+    $('.heading h1').text('Nice Match!');
+    setTimeout(function(){
+        $('.heading h1').text('Memory Match Mania!');
+    },1000);
+    winCheck();
+}
+
+//this function comparees the match counter and total possible matches to display a win message
 function winCheck(){
     if (match_counter == total_possible_matches){
-        $('.heading h1').text('You Win!');
+        $('.heading h1').text('You\'re a Winner!');
     }
 }
 
