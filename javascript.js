@@ -44,11 +44,13 @@ function compare(a,b){
         attempts++;
         attemptDisplay();
         matchDisplay();
+        accuracyDisplay();
     }else{
         console.log('no match');
         attempts++;
         attemptDisplay();
         failDisplay();
+        accuracyDisplay();
         setTimeout(function(){
             $('.notFlipped').show();
         }, 1000);
@@ -82,7 +84,11 @@ function resetButton(){
     match_counter = null;
     attempts = null;
 }
-
+//this function changes the attempts text
 function attemptDisplay(){
     $('.attempts .value').text(attempts);
 }
+function accuracyDisplay(){
+    $('.accuracy .value').text(match_counter/attempts);
+}
+
