@@ -5,8 +5,8 @@ var second_card_clicked=null;
 var c=null;
 var d=null;
 var total_possible_matches=9;
-var match_counter=null;
-var attempts=null;
+var match_counter=0;
+var attempts=0;
 //this is the card flip function that leads  into the compare cards function
 $(document).ready(function(){
     $('.back').addClass('notFlipped');
@@ -81,14 +81,23 @@ function winCheck(){
 function resetButton(){
     console.log('reset recieved');
     $('.back').show();
-    match_counter = null;
-    attempts = null;
+    match_counter = 0;
+    attempts = 0;
+    attemptDisplay();
+    accuracyDisplay();
 }
 //this function changes the attempts text
 function attemptDisplay(){
     $('.attempts .value').text(attempts);
 }
+//this function changes the accuracy display and takes /0 into account
 function accuracyDisplay(){
-    $('.accuracy .value').text(match_counter/attempts);
+    $('.accuracy .value').text(function(){
+        if (attempts == 0){
+            return 0;
+        } else {
+            return parseInt((match_counter/attempts)*100) + "%";
+        }
+    });
 }
 

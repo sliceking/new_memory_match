@@ -26,22 +26,20 @@ header{
 }
 .heading{
     position:relative;
-    bottom:40%;
-    left:25%;
+    left:15%;
+    vertical-align: top;
 }
 .logo{
-    height:100%;
+    position:relative;
+    bottom:35px;
 }
 .logo > img{
     margin:0 15%;
-    position:relative;
-    top:50%;
-    transform:translateY(-50%);
 }
 .controls{
     position:relative;
-    bottom:35px;
-    left:45%;
+    vertical-align:top;
+    left:25vw;
 }
 .controls > h2 {
     display: inline-block;
@@ -61,15 +59,18 @@ header > div{
 .scoreBoard{
     position:relative;
     left:2%;
+    top:20px;
     height:75%;
     width:15%;
     display:inline-block;
     vertical-align: top;
+    text-align: center;
 }
 .scoreBoard p{
-    margin:10vh 0;
-    font-size:2vw;
-    text-align: center;
+    position:relative;
+    top:20%;
+    margin:4vh 0;
+    font-size:1.7vw;
 }
 .game-area{
     height: 70%;
@@ -79,9 +80,10 @@ header > div{
 }
 .card{
     display:inline-block;
-    margin:1% 2%;
-    height:22vh;
+    margin:1% 1.5%;
+    height:20vh;
     width:8vw;
+    left:20px;
     position:relative;
 }
 .card>img{
@@ -93,7 +95,7 @@ header > div{
 }
 
 button{
-    font-family:Rockwell;
+    font-family:Rockwell,sans-serif;
     color:red;
     font-size:1.5vw;
     background-color:khaki;
@@ -101,5 +103,5 @@ button{
     border-radius:25px;
     position:relative;
     top:5vh;
-    left:2.5vw;
+    left:0.2vw;
 }
