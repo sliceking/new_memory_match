@@ -4,6 +4,9 @@ var first_card_clicked=null;
 var second_card_clicked=null;
 var c=null;
 var d=null;
+var total_possible_matches=9;
+var match_counter=null;
+
 $(document).ready(function(){
     $('.back').addClass('notFlipped');
     $('.back').click(function(){
@@ -32,9 +35,12 @@ function compare(a,b){
         console.log('match');
         $(c).removeClass('notFlipped');
         $(d).removeClass('notFlipped');
+        match_counter++;
     }else{
         console.log('no match');
-        $('.notFlipped').show();
+        setTimeout(function(){
+            $('.notFlipped').show();
+        }, 2000);
     }
 }
 
