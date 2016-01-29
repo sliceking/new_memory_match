@@ -6,7 +6,8 @@ var c=null;
 var d=null;
 var total_possible_matches=9;
 var match_counter=null;
-
+var attempts=null;
+//this is the card flip function that leads  into the compare cards function
 $(document).ready(function(){
     $('.back').addClass('notFlipped');
     $('.back').click(function(){
@@ -30,17 +31,25 @@ $(document).ready(function(){
     });
 });
 
+//this function compares the 2 selected cards and determines if they match or not and increment the match counter and attempts counter
 function compare(a,b){
     if(a==b){
         console.log('match');
         $(c).removeClass('notFlipped');
         $(d).removeClass('notFlipped');
         match_counter++;
+        winCheck();
     }else{
         console.log('no match');
+        attempts++;
         setTimeout(function(){
             $('.notFlipped').show();
-        }, 2000);
+        }, 1000);
+    }
+}
+function winCheck(){
+    if (match_counter == total_possible_matches){
+        $('.heading h1').text('You Win!');
     }
 }
 
