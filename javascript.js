@@ -29,7 +29,7 @@ $(document).ready(function(){
                 d=null;
                 setTimeout(function(){
                     clickable = true;
-                },1000);
+                },1500);
                 console.log(c,d);
             }
 
@@ -59,7 +59,7 @@ function compare(a,b){
         accuracyDisplay();
         setTimeout(function(){
             $('.notFlipped').show();
-        }, 1000);
+        }, 1500);
     }
 }
 //this function will display a fail message when a non-match happens
@@ -67,14 +67,14 @@ function failDisplay(){
     $('.heading h1').text('Super Fail.');
     setTimeout(function(){
         $('.heading h1').text('Memory Match Mania!');
-    },1000);
+    },1500);
 }
 //this function displays if the user has a matched pair
 function matchDisplay(){
     $('.heading h1').text('Nice Match!');
     setTimeout(function(){
         $('.heading h1').text('Memory Match Mania!');
-    },1000);
+    },1500);
     winCheck();
 }
 //this function compares the match counter and total possible matches to display a win message
