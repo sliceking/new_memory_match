@@ -3,6 +3,7 @@ a{
     color:inherit;
 }
 a:hover{
+    text-decoration:none;
     color:lightcoral;
 }
 body{
@@ -94,7 +95,7 @@ header > div{
     border-radius:10px;
 }
 
-button{
+.reset{
     font-family:Rockwell,sans-serif;
     color:red;
     font-size:1.5vw;

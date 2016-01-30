@@ -19,11 +19,12 @@
                         <h1>Memory Match Mania!</h1>
                     </div>
                     <div class="controls">
-                        <h2><a href="#">Settings</a> |</h2>
-                        <h2>| <a href="about.html">About</a></h2>
+                        <h2><a data-target="#settingsModal" data-toggle="modal" href="#settingsModal">Settings</a> |</h2>
+                        <h2>| <a data-target="#aboutModal" data-toggle="modal" href="#aboutModal">About</a></h2>
                     </div>
                 </header>
                 <div class="spacer"></div>
+<!--Score board area -->
                 <div class='contents'>
                     <section class="scoreBoard floater">
                         <button class="reset">Reset Game</button>
@@ -41,6 +42,7 @@
                             <p class="value">0</p>
                         </div>
                     </section>
+<!--Game area-->
                     <section class="game-area floater">
                         <div class="container">
                             <div class="row">
@@ -123,6 +125,42 @@
                             </div>
                         </div>
                     </section>
+                </div>
+<!--settings modal-->
+                <div id="settingsModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Settings</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Set to easy. For you.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Why you wanna change stuff?</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--About Modal-->
+                <div id="aboutModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">About the Game</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>This is a memory match game I started during week 4 of the LearningFuze Full-Stack Web Developer Bootcamp. In the first iteration of the game, I mapped out the structure and positioning of the html elements.</p>
+                                <p>Then in the 2nd version I integrated javascript and jquery to add functionality to the game.</p>
+                            </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </body>
         </html>

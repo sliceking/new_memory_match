@@ -1,5 +1,3 @@
-
-
 var first_card_clicked=null;
 var second_card_clicked=null;
 var c=null;
