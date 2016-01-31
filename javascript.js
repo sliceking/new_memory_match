@@ -33,8 +33,6 @@ $(document).ready(function(){
                 console.log(c,d);
             }
 
-        }else{
-            $(this).effect('shake');
         }
     });
     $('button').click(function(){
