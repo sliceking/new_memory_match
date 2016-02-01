@@ -6,6 +6,7 @@ var total_possible_matches=9;
 var match_counter=0;
 var attempts=0;
 var clickable=true;
+var gamesPlayed=0;
 //this is the card flip function that leads  into the compare cards function
 $(document).ready(function(){
     $('.back').addClass('notFlipped');
@@ -79,6 +80,8 @@ function randomFail(){
 //this function displays if the user has a matched pair and does a win check
 function matchDisplay(){
     if (match_counter == total_possible_matches){
+        gamesPlayed++;
+        gamesPlayedDisplay();
         $('.display h1').text('You Win!!');
         $('.display').show();
     } else{
@@ -109,6 +112,10 @@ function resetButton(){
 //this function changes the attempts text
 function attemptDisplay(){
     $('.attempts .value').text(attempts);
+}
+//this function changes the games played text
+function gamesPlayedDisplay(){
+    $('.games-played .value').text(gamesPlayed);
 }
 //this function changes the accuracy display and takes /0 into account
 function accuracyDisplay(){
