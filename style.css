@@ -107,7 +107,7 @@ header > div{
     left:0.2vw;
 }
 .display{
-    visibility:hidden;
+    display:none;
     position:absolute;
     background-color:khaki;
     #left:50%;

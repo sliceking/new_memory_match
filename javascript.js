@@ -29,7 +29,7 @@ $(document).ready(function(){
                 d=null;
                 setTimeout(function(){
                     clickable = true;
-                },1500);
+                },1000);
                 console.log(c,d);
             }
 
@@ -59,32 +59,46 @@ function compare(a,b){
         accuracyDisplay();
         setTimeout(function(){
             $('.notFlipped').show();
-        }, 1500);
+        }, 1000);
     }
 }
 //this function will display a fail message when a non-match happens
 function failDisplay(){
-    $('.heading h1').text('Super Fail.');
+    $('.display h1').text(randomFail());
+    $('.display').show();
     setTimeout(function(){
-        $('.heading h1').text('Memory Match Mania!');
-    },1500);
+        $('.display').hide();
+    },1000);
 }
-//this function displays if the user has a matched pair
+//this function contains and returns the negative messages when a non-match happens
+function randomFail(){
+    var content =['Super Fail.','Are you stupid or something?','That was definitely wrong.','You\'re REALLY good at being Wrong.','Bad Guess.'];
+    var i = Math.floor(Math.random()*5);
+    return content[i];
+}
+//this function displays if the user has a matched pair and does a win check
 function matchDisplay(){
-    $('.heading h1').text('Nice Match!');
-    setTimeout(function(){
-        $('.heading h1').text('Memory Match Mania!');
-    },1500);
-    winCheck();
-}
-//this function compares the match counter and total possible matches to display a win message
-function winCheck(){
     if (match_counter == total_possible_matches){
-        $('.heading h1').text('You\'re a Winner!');
+        $('.display h1').text('You Win!!');
+        $('.display').show();
+    } else{
+    $('.display h1').text(randomMatch());
+    $('.display').show();
+    setTimeout(function(){
+        $('.display').hide();
+    },1000);
     }
 }
+//this function contains and returns the positive messages when a match happens
+function randomMatch(){
+    var content = ['Nice Match!','Great!','You\'re Really Good at Remembering Stuff!','Amazing!','Good Job!'];
+    var i = Math.floor(Math.random()*5);
+    return content[i];
+}
+
 //this function control the reset button to show all backs of the cards
 function resetButton(){
+    $('.display').hide();
     console.log('reset recieved');
     $('.back').show();
     match_counter = 0;
