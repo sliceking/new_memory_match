@@ -11,6 +11,7 @@ var gamesPlayed=0;
 $(document).ready(function(){
     $('.back').addClass('notFlipped');
     randomCards();
+    $('.back').prev().addClass('front');
     $('.back').click(function(){
         if(clickable==true){
             $(this).hide();
@@ -102,6 +103,9 @@ function randomMatch(){
 
 //this function control the reset button to show all backs of the cards
 function resetButton(){
+    $('img.front').remove();
+    randomCards();
+    $('.back').prev().addClass('front');
     $('.display').hide();
     console.log('reset recieved');
     $('.back').show();
@@ -128,7 +132,7 @@ function accuracyDisplay(){
         }
     });
 }
-
+//this function applies the randomized cards to the right position
 function randomCards(){
     var a = '<img src="images/bill.png">';
     var b = '<img src="images/dipper.png">';
@@ -144,10 +148,11 @@ function randomCards(){
     shuffleArray(pictureArray);
     shuffleArray(pictureArray);
     for(i=0;i<pictureArray.length;i++){
-        var x = '#'+i;
+        var x = '#'+(i+1);
         $(x).prepend(pictureArray[i]);
     }
 }
+//this function randomized the cards in the array
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
