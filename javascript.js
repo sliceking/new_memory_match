@@ -10,6 +10,7 @@ var gamesPlayed=0;
 //this is the card flip function that leads  into the compare cards function
 $(document).ready(function(){
     $('.back').addClass('notFlipped');
+    randomCards();
     $('.back').click(function(){
         if(clickable==true){
             $(this).hide();
@@ -128,3 +129,31 @@ function accuracyDisplay(){
     });
 }
 
+function randomCards(){
+    var a = '<img src="images/bill.png">';
+    var b = '<img src="images/dipper.png">';
+    var c = '<img src="images/ford.png">';
+    var d = '<img src="images/gideon.png">';
+    var e = '<img src="images/gnome.png">';
+    var f = '<img src="images/mabel.jpg">';
+    var g = '<img src="images/soos.png">';
+    var h = '<img src="images/unclestan.png">';
+    var i = '<img src="images/wendy.png">';
+    var pictureArray = [a,a,b,b,c,c,d,d,e,e,f,f,g,g,h,h,i,i];
+    shuffleArray(pictureArray);
+    shuffleArray(pictureArray);
+    shuffleArray(pictureArray);
+    for(i=0;i<pictureArray.length;i++){
+        var x = '#'+i;
+        $(x).prepend(pictureArray[i]);
+    }
+}
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
