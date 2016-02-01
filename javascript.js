@@ -106,6 +106,10 @@ function resetButton(){
     $('img.front').remove();
     randomCards();
     $('.back').prev().addClass('front');
+    first_card_clicked=null;
+    second_card_clicked=null;
+    c=null;
+    d=null;
     $('.display').hide();
     console.log('reset recieved');
     $('.back').show();
