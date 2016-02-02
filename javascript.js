@@ -21,23 +21,19 @@ $(document).ready(function(){
                 $(this).hide();
                 if(first_card_clicked===null){
                     first_card_clicked=$(this).prev().attr('src');
-                    console.log('first card clicked',first_card_clicked);
                     c=$(this);
                 } else {
                     clickable = false;
                     second_card_clicked=$(this).prev().attr('src');
-                    console.log('this is card 2',second_card_clicked);
                     d = $(this);
                     compare(first_card_clicked,second_card_clicked);
                     first_card_clicked=null;
                     second_card_clicked=null;
-                    console.log(first_card_clicked,second_card_clicked);
                     c=null;
                     d=null;
                     setTimeout(function(){
                         clickable = true;
                     },1000);
-                    console.log(c,d);
                 }
             }
         } else{
@@ -46,13 +42,11 @@ $(document).ready(function(){
     });
     $('button').click(function(){
         resetButton();
-        console.log('reset sent');
     });
 });
 //this function compares the 2 selected cards and determines if they match or not and increment the match counter and attempts counter
 function compare(a,b){
     if(a==b){
-        console.log('match');
         $(c).removeClass('notFlipped');
         $(d).removeClass('notFlipped');
         match_counter++;
@@ -66,7 +60,6 @@ function compare(a,b){
             bonus1++;
         }
     }else{
-        console.log('no match');
         attempts++;
         attemptDisplay();
         failDisplay();
@@ -123,7 +116,6 @@ function resetButton(){
     c=null;
     d=null;
     $('.display').hide();
-    console.log('reset recieved');
     $('.back').addClass('notFlipped');
     $('.back').show();
     match_counter = 0;
@@ -184,7 +176,7 @@ function shuffleArray(array) {
     }
     return array;
 }
-//heres the attempt at the countdown timer
+//heres the countdown timer
 function startCountdown(){
     countdownId = setInterval('countdown()',1000);
 }
@@ -197,6 +189,7 @@ function countdown(){
         $('.timer .value').effect('highlight');
     }
 }
+//this controls the bonus display
 function bonusDisplay(a){
     $('.bonus h1').text(a);
     $('.bonus').show();
