@@ -116,3 +116,13 @@ header > div{
     border:4px solid black;
     text-align:center;
 }
+.bonus{
+    display:none;
+    position:absolute;
+    background-color:lawngreen;
+    left:70%;
+    bottom:82%;
+    width:20%;
+    border:4px solid black;
+    text-align:center;
+}

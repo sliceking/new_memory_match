@@ -37,7 +37,6 @@ $(document).ready(function(){
                     if(match_counter == 4){
                         count = count+5;
                     }
-
                     setTimeout(function(){
                         clickable = true;
                     },1000);
