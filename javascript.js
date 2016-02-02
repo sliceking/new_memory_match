@@ -7,7 +7,7 @@ var match_counter=0;
 var attempts=0;
 var clickable=true;
 var gamesPlayed=0;
-var count=60;
+var count=5;
 //this is the card flip function that leads  into the compare cards function
 $(document).ready(function(){
     $('.back').addClass('notFlipped');
@@ -15,29 +15,30 @@ $(document).ready(function(){
     startCountdown();
     $('.back').prev().addClass('front');
     $('.back').click(function(){
-        if(clickable==true){
-            $(this).hide();
-            if(first_card_clicked===null){
-                first_card_clicked=$(this).prev().first().attr('src');
-                console.log('first card clicked',first_card_clicked);
-                c=$(this);
-            } else {
-                clickable = false;
-                second_card_clicked=$(this).prev().first().attr('src');
-                console.log('this is card 2',second_card_clicked);
-                d = $(this);
-                compare(first_card_clicked,second_card_clicked);
-                first_card_clicked=null;
-                second_card_clicked=null;
-                console.log(first_card_clicked,second_card_clicked);
-                c=null;
-                d=null;
-                setTimeout(function(){
-                    clickable = true;
-                },1000);
-                console.log(c,d);
+        if(count != 0){
+            if(clickable==true){
+                $(this).hide();
+                if(first_card_clicked===null){
+                    first_card_clicked=$(this).prev().first().attr('src');
+                    console.log('first card clicked',first_card_clicked);
+                    c=$(this);
+                } else {
+                    clickable = false;
+                    second_card_clicked=$(this).prev().first().attr('src');
+                    console.log('this is card 2',second_card_clicked);
+                    d = $(this);
+                    compare(first_card_clicked,second_card_clicked);
+                    first_card_clicked=null;
+                    second_card_clicked=null;
+                    console.log(first_card_clicked,second_card_clicked);
+                    c=null;
+                    d=null;
+                    setTimeout(function(){
+                        clickable = true;
+                    },1000);
+                    console.log(c,d);
+                }
             }
-
         }
     });
     $('button').click(function(){
@@ -120,6 +121,8 @@ function resetButton(){
     attempts = 0;
     attemptDisplay();
     accuracyDisplay();
+    count=61;
+    startCountdown();
 }
 //this function changes the attempts text
 function attemptDisplay(){
@@ -179,5 +182,6 @@ function countdown(){
         $('.timer .value').text(count);
     } else{
         clearInterval(countdownId);
+        $('.timer .value').effect('highlight');
     }
 }
