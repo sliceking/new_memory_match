@@ -19,12 +19,12 @@ $(document).ready(function(){
             if(clickable==true){
                 $(this).hide();
                 if(first_card_clicked===null){
-                    first_card_clicked=$(this).prev().first().attr('src');
+                    first_card_clicked=$(this).prev().attr('src');
                     console.log('first card clicked',first_card_clicked);
                     c=$(this);
                 } else {
                     clickable = false;
-                    second_card_clicked=$(this).prev().first().attr('src');
+                    second_card_clicked=$(this).prev().attr('src');
                     console.log('this is card 2',second_card_clicked);
                     d = $(this);
                     compare(first_card_clicked,second_card_clicked);
