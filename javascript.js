@@ -8,7 +8,6 @@ var attempts=0;
 var clickable=true;
 var gamesPlayed=0;
 var count=45;
-var countdownId = null;
 //this is the card flip function that leads  into the compare cards function
 $(document).ready(function(){
     $('.back').addClass('notFlipped');
@@ -117,12 +116,12 @@ function resetButton(){
     d=null;
     $('.display').hide();
     console.log('reset recieved');
+    $('.back').addClass('notFlipped');
     $('.back').show();
     match_counter = 0;
     attempts = 0;
     attemptDisplay();
     accuracyDisplay();
-    clearInterval(countdownId);
     $('.timer .value').text('45');
     count=45;
     startCountdown();
