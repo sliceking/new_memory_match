@@ -130,6 +130,7 @@ function resetButton(){
     attemptDisplay();
     accuracyDisplay();
     $('.timer .value').text('45');
+    clearInterval(countdownId);
     count=45;
     startCountdown();
 }
