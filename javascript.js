@@ -33,12 +33,19 @@ $(document).ready(function(){
                     console.log(first_card_clicked,second_card_clicked);
                     c=null;
                     d=null;
+                    /*still working on the bonus function and needs better display*/
+                    if(match_counter == 4){
+                        count = count+5;
+                    }
+
                     setTimeout(function(){
                         clickable = true;
                     },1000);
                     console.log(c,d);
                 }
             }
+        } else{
+            $('.timer .value').effect('highlight');
         }
     });
     $('button').click(function(){
