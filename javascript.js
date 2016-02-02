@@ -7,10 +7,12 @@ var match_counter=0;
 var attempts=0;
 var clickable=true;
 var gamesPlayed=0;
+var count=60;
 //this is the card flip function that leads  into the compare cards function
 $(document).ready(function(){
     $('.back').addClass('notFlipped');
     randomCards();
+    startCountdown();
     $('.back').prev().addClass('front');
     $('.back').click(function(){
         if(clickable==true){
@@ -166,4 +168,16 @@ function shuffleArray(array) {
         array[j] = temp;
     }
     return array;
+}
+//heres the attempt at the countdown timer
+function startCountdown(){
+    countdownId = setInterval('countdown()',1000);
+}
+function countdown(){
+    if (count > 0){
+        count = count - 1;
+        $('.timer .value').text(count);
+    } else{
+        clearInterval(countdownId);
+    }
 }
