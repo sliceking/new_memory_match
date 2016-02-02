@@ -86,6 +86,7 @@ function matchDisplay(){
         gamesPlayedDisplay();
         $('.display h1').text('You Win!!');
         $('.display').show();
+        $('button').effect('pulsate');
     } else{
     $('.display h1').text(randomMatch());
     $('.display').show();
