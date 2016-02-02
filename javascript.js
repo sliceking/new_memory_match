@@ -8,6 +8,7 @@ var attempts=0;
 var clickable=true;
 var gamesPlayed=0;
 var count=45;
+var bonus1=0;
 //this is the card flip function that leads  into the compare cards function
 $(document).ready(function(){
     $('.back').addClass('notFlipped');
@@ -33,10 +34,6 @@ $(document).ready(function(){
                     console.log(first_card_clicked,second_card_clicked);
                     c=null;
                     d=null;
-                    /*still working on the bonus function and needs better display*/
-                    if(match_counter == 4){
-                        count = count+5;
-                    }
                     setTimeout(function(){
                         clickable = true;
                     },1000);
@@ -63,6 +60,11 @@ function compare(a,b){
         attemptDisplay();
         matchDisplay();
         accuracyDisplay();
+        if(bonus1 == 0 && match_counter == 4){
+            count = count+5;
+            bonusDisplay('5 Second Bonus!');
+            bonus1++;
+        }
     }else{
         console.log('no match');
         attempts++;
@@ -126,6 +128,7 @@ function resetButton(){
     $('.back').show();
     match_counter = 0;
     attempts = 0;
+    bonus1 = 0;
     attemptDisplay();
     accuracyDisplay();
     $('.timer .value').text('45');
@@ -193,4 +196,11 @@ function countdown(){
         clearInterval(countdownId);
         $('.timer .value').effect('highlight');
     }
+}
+function bonusDisplay(a){
+    $('.bonus h1').text(a);
+    $('.bonus').show();
+    setTimeout(function(){
+        $('.bonus').hide();
+    },1500);
 }
