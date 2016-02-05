@@ -109,25 +109,25 @@ function randomMatch(){
 //this function control the reset button to show all backs of the cards
 function resetButton(){
     //dan start
-    $('img.front').remove();
-    randomCards();
-    $('.back').prev().addClass('front');
-    first_card_clicked=null;
-    second_card_clicked=null;
-    c=null;
-    d=null;
-    $('.display').hide();
-    $('.back').addClass('notFlipped');
-    $('.back').show();
-    match_counter = 0;
-    attempts = 0;
-    bonus1 = 0;
-    attemptDisplay();
-    accuracyDisplay();
-    $('.timer .value').text('45');
-    clearInterval(countdownId);
-    count=45;
-    startCountdown();
+    //finds all the front card pictures and removes them from the DOM
+    //this function randomizes and places the front card pictures back on the game board
+    //adds a back class to all the newly placed front card pictures that aid in targeting
+    //this resets a variable that flags if a card was already picked before the reset button is pressed
+    //this resets a variable that flags if the 2nd card was already picked before the reset button is pressed
+    //this resets a variable marker of the location of the first card clicked
+    //this resets a variable marker of the location of the second card clicked
+    //this removes the match or fail or win displays from the screen
+    //this adds a class to the backs of all the cards. This helps the proper cards flip back over if 2 cards do not match, instead of flipping all the cards back over
+    //this displays all the backs of the cards, so that none of the card fronts are showing
+    //this resets the amount of matches a person has in a round variable
+    //this resets the amount of attempted matches a person makes in a round variable
+    //this resets the 4 match bonus variable
+    //this function updates the display for the amount of attempts
+    //this function updates the display for the accuracy of the player (matches/attempts)
+    //this resets the timer display text back to 45 seconds
+    //this stops the interval that runs the timer
+    //this resets the variable counter for the timer back to 45 seconds
+    //this function starts the counter
 
     //dan end
 }
