@@ -108,6 +108,7 @@ function randomMatch(){
 
 //this function control the reset button to show all backs of the cards
 function resetButton(){
+    //dan start
     $('img.front').remove();
     randomCards();
     $('.back').prev().addClass('front');
@@ -127,6 +128,8 @@ function resetButton(){
     clearInterval(countdownId);
     count=45;
     startCountdown();
+
+    //dan end
 }
 //this function changes the attempts text
 function attemptDisplay(){
