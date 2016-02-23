@@ -2,8 +2,8 @@
         <html>
             <head>
                 <title>Memory Match v1.0</title>
-                <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
                 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+                <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
                 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
                 <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
                 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -49,7 +49,12 @@
                         </div>
                     </section>
 <!--Game area-->
-                    <section class="game-area floater">
+                    <div class="container-fluid new_board_selector floater">
+                        <h1>How many Cards Would you like to play with?</h1>
+                        <button class="btn btn-danger">18 Cards</button>
+                        <button class="btn btn-danger">10 Cards</button>
+                    </div>
+                    <!--<section class="game-area floater">
                         <div class="container">
                             <div class="row">
                                 <div class='card' id="1">
@@ -113,7 +118,7 @@
                             </div>
                         </div>
                     </section>
-                </div>
+                </div> -->
 <!--This is the Win/Lose/Match displayer-->
                 <div class="display">
                     <h1>!</h1>
@@ -134,9 +139,6 @@
                             <div class="modal-body">
                                 <p>Set to medium. Because you're medium.</p>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Why you wanna change stuff?</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -152,9 +154,6 @@
                                 <p>This is a memory match game I started during week 4 of the LearningFuze Full-Stack Web Developer Bootcamp. In the first iteration of the game, I mapped out the structure and positioning of the html elements.</p>
                                 <p>Then in the 2nd version I integrated javascript and jquery to add functionality to the game.</p>
                                 <p>In the third edit I randomized the cards (to make it an actual game), added a countdown timer to add a sense or urgency and experimented with bonuses for the user.</p>
-                            </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>

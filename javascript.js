@@ -10,6 +10,26 @@ var gamesPlayed=0;
 var count=45;
 var bonus1=0;
 //this is the card flip function that leads  into the compare cards function
+
+var game_board = function(){
+    this.cardAmount = null;
+    this.firstCardClicked=null;
+    this.secondCardClicked=null;
+    this.firstCardElement=null;
+    this.secondCardElement=null;
+    this.totalPossibleMatches=null;
+    this.attempts=0;
+    this.cardsClickable=true;
+    this.gamesPlayed=0;
+    this.timerCounter=60;
+    this.bonus=0;
+
+};
+
+var game_card = function(){
+
+};
+
 $(document).ready(function(){
     $('.back').addClass('notFlipped');
     randomCards();
