@@ -1,20 +1,25 @@
-var first_card_clicked=null;
-var second_card_clicked=null;
-var c=null;
-var d=null;
-var total_possible_matches=9;
-var match_counter=0;
-var attempts=0;
-var clickable=true;
-var gamesPlayed=0;
-var count=45;
-var bonus1=0;
+//var first_card_clicked=null;
+//var second_card_clicked=null;
+//var c=null;
+//var d=null;
+//var total_possible_matches=9;
+//var match_counter=0;
+//var attempts=0;
+//var clickable=true;
+//var gamesPlayed=0;
+//var count=45;
+//var bonus1=0;
 //this is the card flip function that leads  into the compare cards function
+var countDownId=null;
 
 $(document).ready(function(){
     $('#button18cards').click(function(){
-        var game1 = new game_board(18);
-        game1.appendGameBoardStructure();
+        var game18 = new game_board(18);
+        game18.appendGameBoardStructure();
+    });
+    $('#button10cards').click(function(){
+        var game10 = new game_board(10);
+        game10.appendGameBoardStructure();
     })
 });
 
@@ -29,6 +34,18 @@ var game_board = function(cardAmount){
     this.cardsClickable=true;
     this.gamesPlayed=0;
     this.timerCounter=60;
+    this.startCountdown= function(){
+        countDownId = setInterval(this.countdown(),1000);
+    };
+    this.countdown = function(){
+        if (this.timerCounter > 0){
+            this.timerCounter = this.timerCounter - 1;
+        $('.timer .value').text(this.timerCounter);
+    } else{
+        clearInterval(countDownId);
+        $('.timer .value').effect('highlight');
+    }
+    };
     this.bonus=0;
     this.appendGameBoardStructure=function(){
         $('.new_board_selector').hide('clip');
@@ -44,7 +61,7 @@ var game_board = function(cardAmount){
         $('body').append(newGame);
         newGame.append(containerDiv);
         containerDiv.append(gameRow).append(gameRow).append(gameRow);
-
+        this.startCountdown();
     };
 
 };
@@ -56,40 +73,40 @@ var game_card = function(){
 
 };
 
-$(document).ready(function(){
-    $('.back').addClass('notFlipped');
-    randomCards();
-    startCountdown();
-    $('.back').prev().addClass('front');
-    $('.back').click(function(){
-        if(count != 0){
-            if(clickable==true){
-                $(this).hide();
-                if(first_card_clicked===null){
-                    first_card_clicked=$(this).prev().attr('src');
-                    c=$(this);
-                } else {
-                    clickable = false;
-                    second_card_clicked=$(this).prev().attr('src');
-                    d = $(this);
-                    compare(first_card_clicked,second_card_clicked);
-                    first_card_clicked=null;
-                    second_card_clicked=null;
-                    c=null;
-                    d=null;
-                    setTimeout(function(){
-                        clickable = true;
-                    },1000);
-                }
-            }
-        } else{
-            $('.timer .value').effect('highlight');
-        }
-    });
-    $('button').click(function(){
-        resetButton();
-    });
-});
+//$(document).ready(function(){
+//    $('.back').addClass('notFlipped');
+//    randomCards();
+//    startCountdown();
+//    $('.back').prev().addClass('front');
+//    $('.back').click(function(){
+//        if(count != 0){
+//            if(clickable==true){
+//                $(this).hide();
+//                if(first_card_clicked===null){
+//                    first_card_clicked=$(this).prev().attr('src');
+//                    c=$(this);
+//                } else {
+//                    clickable = false;
+//                    second_card_clicked=$(this).prev().attr('src');
+//                    d = $(this);
+//                    compare(first_card_clicked,second_card_clicked);
+//                    first_card_clicked=null;
+//                    second_card_clicked=null;
+//                    c=null;
+//                    d=null;
+//                    setTimeout(function(){
+//                        clickable = true;
+//                    },1000);
+//                }
+//            }
+//        } else{
+//            $('.timer .value').effect('highlight');
+//        }
+//    });
+//    //$('button').click(function(){
+//    //    resetButton();
+//    //});
+//});
 //this function compares the 2 selected cards and determines if they match or not and increment the match counter and attempts counter
 function compare(a,b){
     if(a==b){
@@ -223,18 +240,18 @@ function shuffleArray(array) {
     return array;
 }
 //heres the countdown timer
-function startCountdown(){
-    countdownId = setInterval('countdown()',1000);
-}
-function countdown(){
-    if (count > 0){
-        count = count - 1;
-        $('.timer .value').text(count);
-    } else{
-        clearInterval(countdownId);
-        $('.timer .value').effect('highlight');
-    }
-}
+//function startCountdown(){
+//    countdownId = setInterval('countdown()',1000);
+//}
+//function countdown(){
+//    if (count > 0){
+//        count = count - 1;
+//        $('.timer .value').text(count);
+//    } else{
+//        clearInterval(countdownId);
+//        $('.timer .value').effect('highlight');
+//    }
+//}
 //this controls the bonus display
 function bonusDisplay(a){
     $('.bonus h1').text(a);
