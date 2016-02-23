@@ -10,20 +10,20 @@
 //var count=45;
 //var bonus1=0;
 //this is the card flip function that leads  into the compare cards function
+
 var countDownId=null;
 
 $(document).ready(function(){
     $('#button18cards').click(function(){
-        var game18 = new game_board(18);
         game18.appendGameBoardStructure();
     });
     $('#button10cards').click(function(){
-        var game10 = new game_board(10);
         game10.appendGameBoardStructure();
     })
 });
 
 var game_board = function(cardAmount){
+    var self = this;
     this.cardAmount = cardAmount;
     this.firstCardClicked=null;
     this.secondCardClicked=null;
@@ -34,12 +34,16 @@ var game_board = function(cardAmount){
     this.cardsClickable=true;
     this.gamesPlayed=0;
     this.timerCounter=60;
-    this.startCountdown= function(){
-        countDownId = setInterval(this.countdown(),1000);
+    this.startCountdown = function(){
+        countDownId= setInterval(function(){
+            self.countdown()
+        },1000);
     };
     this.countdown = function(){
+        console.log('counter: ' + this.timerCounter);
         if (this.timerCounter > 0){
-            this.timerCounter = this.timerCounter - 1;
+            console.log('this in timercounter: ', this);
+            this.timerCounter -= 1;
         $('.timer .value').text(this.timerCounter);
     } else{
         clearInterval(countDownId);
@@ -61,10 +65,23 @@ var game_board = function(cardAmount){
         $('body').append(newGame);
         newGame.append(containerDiv);
         containerDiv.append(gameRow).append(gameRow).append(gameRow);
-        this.startCountdown();
+        console.log('this in append game board: ', this);
+        self.startCountdown();
     };
 
 };
+
+var game18 = new game_board(18);
+var game10 = new game_board(10);
+
+
+//function timerShit() {
+//    var timeThing = Date.now();
+//    setInterval(function() {
+//        console.log('time: ' + timeThing);
+//    }, 1000)
+//}
+
 
 var game_card = function(){
     this.cardFront = null;
