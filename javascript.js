@@ -11,8 +11,15 @@ var count=45;
 var bonus1=0;
 //this is the card flip function that leads  into the compare cards function
 
-var game_board = function(){
-    this.cardAmount = null;
+$(document).ready(function(){
+    $('#button18cards').click(function(){
+        var game1 = new game_board(18);
+        game1.appendGameBoardStructure();
+    })
+});
+
+var game_board = function(cardAmount){
+    this.cardAmount = cardAmount;
     this.firstCardClicked=null;
     this.secondCardClicked=null;
     this.firstCardElement=null;
@@ -23,10 +30,29 @@ var game_board = function(){
     this.gamesPlayed=0;
     this.timerCounter=60;
     this.bonus=0;
+    this.appendGameBoardStructure=function(){
+        $('.new_board_selector').hide('clip');
+        var newGame = $('<section>',{
+            class:"game-area floater"
+        });
+        var containerDiv = $("<div>",{
+            class:"container-fluid"
+        });
+        var gameRow = $('<div>',{
+            class:"row"
+        });
+        $('body').append(newGame);
+        newGame.append(containerDiv);
+        containerDiv.append(gameRow).append(gameRow).append(gameRow);
+
+    };
 
 };
 
 var game_card = function(){
+    this.cardFront = null;
+    this.cardBack = null;
+    this.DOMelement = null;
 
 };
 
