@@ -30,7 +30,7 @@ function append_card_backs(){
 }
 function show_card(card){
     var inside = $(card).prev().attr('src');
-    console.log(inside);
+    // console.log(inside);
     $(card).hide();
     console.log('show card fired');
     compare_cards(inside);
