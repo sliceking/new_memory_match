@@ -1,0 +1,13 @@
+.header{
+    width:95vw;
+    height:10vh;
+    border:5px solid black;
+}
+.header ul{
+    list-style: none;
+    display:flex;
+    justify-content: space-around;
+}
+li{
+    font-size:30px;
+}
