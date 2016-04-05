@@ -40,13 +40,13 @@ li{
 }
 .card{
     width:100px;
-    height:150px;
+    height:140px;
     margin:1%;
     position:relative;
 }
 .card img{
     max-width:100%;
-}
-.card_front{
     position:absolute;
+    width:100px;
+    height:140px;
 }

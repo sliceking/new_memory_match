@@ -17,8 +17,8 @@ function append_card_backs(){
             src:card_fronts[i],
             class:'card_front'
         })
-        $(card_div).append(card_back);
         $(card_div).append(card_front);
+        $(card_div).append(card_back);
         $(game_area).append(card_div);
     }
 }
