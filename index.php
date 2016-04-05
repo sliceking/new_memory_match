@@ -14,15 +14,19 @@
                     <li>High Score</li>
                 </ul>
             </div>
-            <div class="scoreboard">
-                <ul>
-                    <li>Timer</li>
-                    <li>Score</li>
-
-                </ul>
-            </div>
-            <div class="game_area">
-                
+            <div class="main">
+                <div class="scoreboard">
+                    <ul>
+                        <li>Timer</li>
+                        <li id="timer">a</li>
+                        <li>Score</li>
+                        <li id="score">a</li>
+    
+                    </ul>
+                </div>
+                <div class="game_area">
+                    
+                </div>
             </div>
         </body>
     </html>

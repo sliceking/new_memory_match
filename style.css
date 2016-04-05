@@ -2,6 +2,7 @@
     width:95vw;
     height:10vh;
     border:5px solid black;
+    margin:5px;
 }
 .header ul{
     list-style: none;
@@ -10,4 +11,27 @@
 }
 li{
     font-size:30px;
+}
+.scoreboard{
+    width:10vw;
+    height:70vh;
+    border:5px solid black;
+    margin:5px;
+}
+.scoreboard ul{
+    list-style: none;
+
+}
+.scoreboard li{
+    margin:15px 0;
+}
+.game_area{
+    margin:5px;
+    border:5px solid black;
+    width:80vw;
+    height:70vh;
+}
+.main{
+    display:flex;
+    flex-direction: row;
 }
