@@ -1,14 +1,14 @@
 var first_card=null;
 var second_card=null;
 $(document).ready(function(){
-    append_card_backs();
+    append_cards_to_gameboard();
 
     $('.card_back').click(function(){
         show_card(this);
     })
 });
 
-function append_card_backs(){
+function append_cards_to_gameboard(){
     for (var i=0;i<18;i++){
         var card_fronts=['images/bill.png','images/bill.png','images/dipper.png','images/dipper.png','images/ford.png','images/ford.png','images/gideon.png','images/gideon.png','images/gnome.png','images/gnome.png','images/mabel.jpg','images/mabel.jpg','images/soos.png','images/soos.png','images/unclestan.png','images/unclestan.png','images/wendy.png','images/wendy.png'];
         var game_area = $('.game_area');
@@ -42,12 +42,30 @@ function compare_cards(card){
         second_card = card;
         if (first_card.attr('src') == second_card.attr('src')) {
             console.log('cards match');
+            cards_match_display();
+            first_card.next().removeClass('card_back');
+            second_card.next().removeClass('card_back');
             first_card = null;
             second_card = null;
         } else {
             console.log('cards dont match');
+            setTimeout(function(){
+                $('.card_back').show();
+            },1000);
             first_card = null;
             second_card = null;
         }
     }
+}
+
+function cards_match_display(){
+    var score = $('#score').text();
+    score = Number(score);
+    score += 10;
+    $('#score').text(score);
+    console.log(score);
+}
+
+function cards_dont_match(){
+
 }

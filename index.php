@@ -18,9 +18,9 @@
                 <div class="scoreboard">
                     <ul>
                         <li>Timer</li>
-                        <li id="timer">a</li>
+                        <li id="timer">0</li>
                         <li>Score</li>
-                        <li id="score">a</li>
+                        <li id="score">0</li>
     
                     </ul>
                 </div>
