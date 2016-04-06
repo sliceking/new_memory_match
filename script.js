@@ -29,7 +29,7 @@ function append_card_backs(){
     }
 }
 function show_card(card){
-    var inside = $(card).prev().attr('src');
+    var inside = $(card).prev();
     // console.log(inside);
     $(card).hide();
     console.log('show card fired');
@@ -40,7 +40,7 @@ function compare_cards(card){
         first_card = card;
     }else if(second_card == null) {
         second_card = card;
-        if (first_card == second_card) {
+        if (first_card.attr('src') == second_card.attr('src')) {
             console.log('cards match');
             first_card = null;
             second_card = null;
