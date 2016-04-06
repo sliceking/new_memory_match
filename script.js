@@ -1,15 +1,21 @@
 var first_card=null; //global variable to track a clicked card
 var second_card=null; //global variable to track a second clicked card
+var clickable=true; //global variable to prevent rapid clicking when cards don't match
 $(document).ready(function(){
     append_cards_to_gameboard(); //appends cards to the gameboard
     $('.card_back').click(function(){ //on clicking the back of the card it fires the show card function
-        show_card(this);
+        if(clickable){ //if clickable is true, show_card will work, else nothing happens
+            show_card(this);
+
+        }
+
     })
 });
 
 function append_cards_to_gameboard(){
+    var card_fronts=['images/bill.png','images/bill.png','images/dipper.png','images/dipper.png','images/ford.png','images/ford.png','images/gideon.png','images/gideon.png','images/gnome.png','images/gnome.png','images/mabel.jpg','images/mabel.jpg','images/soos.png','images/soos.png','images/unclestan.png','images/unclestan.png','images/wendy.png','images/wendy.png'];
+    var card_fronts = randomize_cards(card_fronts);
     for (var i=0;i<18;i++){
-        var card_fronts=['images/bill.png','images/bill.png','images/dipper.png','images/dipper.png','images/ford.png','images/ford.png','images/gideon.png','images/gideon.png','images/gnome.png','images/gnome.png','images/mabel.jpg','images/mabel.jpg','images/soos.png','images/soos.png','images/unclestan.png','images/unclestan.png','images/wendy.png','images/wendy.png'];
         var game_area = $('.game_area');
         var card_div = $('<div>',{
             class:'card'
@@ -28,6 +34,7 @@ function append_cards_to_gameboard(){
     }
 }
 function show_card(card){
+    clickable = false;
     var inside = $(card).prev(); //variable stores the information about the front of the card
     $(card).hide(); //hides the back of the card
     console.log('show card fired');
@@ -36,6 +43,7 @@ function show_card(card){
 function compare_cards(card){
     if (first_card == null){
         first_card = card; // if the first_card variable is null, it sets first_card to the card clicked
+        clickable = true;
     }else if(second_card == null) {
         second_card = card; // if the second_card variable is null, it sets second_card to the card clicked
         if (first_card.attr('src') == second_card.attr('src')) {
@@ -57,13 +65,27 @@ function cards_match(){
     second_card.next().removeClass('card_back');
     first_card = null;
     second_card = null;
+    clickable = true;
 }
 
 function cards_dont_match(){
     console.log('cards dont match');
     setTimeout(function(){
         $('.card_back').show();
+        clickable = true;
     },1000);
     first_card = null;
     second_card = null;
 }
+function randomize_cards(array){
+    var counter = array.length;
+    while(counter>0){
+        var index = Math.floor(Math.random() * counter);
+        counter--;
+        var temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+    }
+    return array;
+}
+
