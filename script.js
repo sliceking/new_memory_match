@@ -6,9 +6,10 @@ $(document).ready(function(){
     $('.card_back').click(function(){ //on clicking the back of the card it fires the show card function
         if(clickable){ //if clickable is true, show_card will work, else nothing happens
             show_card(this);
-
         }
-
+    })
+    $('button').click(function(){
+        reset_game();
     })
 });
 
@@ -88,4 +89,8 @@ function randomize_cards(array){
     }
     return array;
 }
-
+function reset_game(){
+    $('.game_area').empty();
+    $('#score').text('0');
+    append_cards_to_gameboard()
+}

@@ -17,6 +17,7 @@
             <div class="main">
                 <div class="scoreboard">
                     <ul>
+                        <li><button>Reset</button></li>
                         <li>Timer</li>
                         <li id="timer">0</li>
                         <li>Score</li>
