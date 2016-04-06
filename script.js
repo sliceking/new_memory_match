@@ -92,5 +92,5 @@ function randomize_cards(array){
 function reset_game(){
     $('.game_area').empty();
     $('#score').text('0');
-    append_cards_to_gameboard()
+    append_cards_to_gameboard();
 }
