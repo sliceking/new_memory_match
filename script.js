@@ -13,29 +13,29 @@ $(document).ready(function(){
     })
 });
 
-function append_cards_to_gameboard(){
+function append_cards_to_gameboard(){ //func creates a card play area
     var card_fronts=['images/bill.png','images/bill.png','images/dipper.png','images/dipper.png','images/ford.png','images/ford.png','images/gideon.png','images/gideon.png','images/gnome.png','images/gnome.png','images/mabel.jpg','images/mabel.jpg','images/soos.png','images/soos.png','images/unclestan.png','images/unclestan.png','images/wendy.png','images/wendy.png'];
-    var card_fronts = randomize_cards(card_fronts);
+    var card_fronts = randomize_cards(card_fronts); //randomizes the card front array
     for (var i=0;i<18;i++){
-        var game_area = $('.game_area');
-        var card_div = $('<div>',{
+        var game_area = $('.game_area'); //game area target
+        var card_div = $('<div>',{ // divs to contain the cards
             class:'card'
         });
-        var card_back = $('<img>',{
+        var card_back = $('<img>',{ //card back images
             src:'images/cardBack.jpg',
             class:'card_back'
         });
-        var card_front = $('<img>',{
+        var card_front = $('<img>',{ //card front images
             src:card_fronts[i],
             class:'card_front'
         });
-        $(card_div).append(card_front);
-        $(card_div).append(card_back);
-        $(game_area).append(card_div);
+        $(card_div).append(card_front); //appends the card fronts to a card area
+        $(card_div).append(card_back); //appends the card backs on top of the card fronts
+        $(game_area).append(card_div); //appends all of that to the game area
     }
 }
-function show_card(card){
-    clickable = false;
+function show_card(card){ //func to show the card front
+    clickable = false; //sets clickable to false to prevent fast clicking
     var inside = $(card).prev(); //variable stores the information about the front of the card
     $(card).hide(); //hides the back of the card
     console.log('show card fired');
@@ -55,18 +55,18 @@ function compare_cards(card){
     }
 }
 
-function cards_match(){
+function cards_match(){ //func for when the cards match
     console.log('cards match');
-    var score = $('#score').text();
-    score = Number(score);
-    score += 10;
-    $('#score').text(score);
+    var score = $('#score').text(); //sets a variable to the current score
+    score = Number(score); //changes the variable from a string to a number
+    score += 10; //adds 10 to the scure
+    $('#score').text(score); //sets the visible score to the new total
     console.log(score);
-    first_card.next().removeClass('card_back');
-    second_card.next().removeClass('card_back');
-    first_card = null;
-    second_card = null;
-    clickable = true;
+    first_card.next().removeClass('card_back'); //removes the card back class from the first card
+    second_card.next().removeClass('card_back'); //removes the card back class from the second card
+    first_card = null; //sets first card to null
+    second_card = null; //sets second card to null
+    clickable = true; //makes cards clickable again
 }
 
 function cards_dont_match(){
@@ -89,8 +89,8 @@ function randomize_cards(array){
     }
     return array;
 }
-function reset_game(){
-    $('.game_area').empty();
-    $('#score').text('0');
-    append_cards_to_gameboard();
+function reset_game(){ //resets the game
+    $('.game_area').empty(); //empties the game area
+    $('#score').text('0'); // sets the score back to 0
+    append_cards_to_gameboard(); //creates a new game area
 }
