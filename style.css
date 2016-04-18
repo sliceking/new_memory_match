@@ -3,6 +3,7 @@
     height:10vh;
     border:5px solid black;
     margin:5px;
+    position:relative;
 }
 .header ul{
     list-style: none;
@@ -54,4 +55,12 @@ li{
     position:absolute;
     width:100px;
     height:140px;
+}
+.display_message{
+    background-color: red;
+    display:inline-block;
+    position:absolute;
+    left:50%;
+    bottom:5%;
+    z-index: 10;
 }

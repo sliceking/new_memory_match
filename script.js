@@ -1,13 +1,14 @@
 var first_card=null; //global variable to track a clicked card
 var second_card=null; //global variable to track a second clicked card
 var clickable=true; //global variable to prevent rapid clicking when cards don't match
+var total_matches=0;
 $(document).ready(function(){
     append_cards_to_gameboard(); //appends cards to the gameboard
     $('.card_back').click(function(){ //on clicking the back of the card it fires the show card function
         if(clickable){ //if clickable is true, show_card will work, else nothing happens
             show_card(this);
         }
-    })
+    });
     $('button').click(function(){
         reset_game();
     })
@@ -56,6 +57,12 @@ function compare_cards(card){
 }
 
 function cards_match(){ //func for when the cards match
+    total_matches++;
+    if(total_matches != 9){
+        display_messages('Cards Match!');
+    }else{
+        display_messages('You Win!');
+    }
     console.log('cards match');
     var score = $('#score').text(); //sets a variable to the current score
     score = Number(score); //changes the variable from a string to a number
@@ -70,6 +77,7 @@ function cards_match(){ //func for when the cards match
 }
 
 function cards_dont_match(){
+    display_messages('Cards don\'t match!');
     console.log('cards dont match');
     setTimeout(function(){
         $('.card_back').show();
@@ -92,5 +100,22 @@ function randomize_cards(array){
 function reset_game(){ //resets the game
     $('.game_area').empty(); //empties the game area
     $('#score').text('0'); // sets the score back to 0
+    total_matches = 0;
+    $('.display_message').empty();
     append_cards_to_gameboard(); //creates a new game area
+}
+function display_messages(condition){
+    var message_div = $('<div>',{
+        class:'display_message'
+    });
+    var message = $('<h1>',{
+        text:condition
+    });
+    message_div.append(message);
+    $('.header').append(message_div);
+    if(condition != 'You Win!'){
+        setTimeout(function(){
+            message_div.remove();
+        },1000);
+    }
 }
