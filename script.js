@@ -98,6 +98,8 @@ function randomize_cards(array){
     return array;
 }
 function reset_game(){ //resets the game
+    first_card = null;
+    second_card = null;
     $('.game_area').empty(); //empties the game area
     $('#score').text('0'); // sets the score back to 0
     total_matches = 0;
