@@ -4,7 +4,7 @@ var clickable=true; //global variable to prevent rapid clicking when cards don't
 var total_matches=0;
 $(document).ready(function(){
     append_cards_to_gameboard(); //appends cards to the gameboard
-    $('.card_back').click(function(){ //on clicking the back of the card it fires the show card function
+    $('.game_area').on('click','.card_back', function(){ //on clicking the back of the card it fires the show card function
         if(clickable){ //if clickable is true, show_card will work, else nothing happens
             show_card(this);
         }
