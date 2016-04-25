@@ -1,8 +1,20 @@
-// var first_card=null; //global variable to track a clicked card
-// var second_card=null; //global variable to track a second clicked card
-var clickable=true; //global variable to prevent rapid clicking when cards don't match
-// var total_matches=0;
 
+var clickable=true; //global variable to prevent rapid clicking when cards don't match
+function CARD(front,back){
+    var self = this;
+    this.front=front;
+    this.back=back;
+    $(this.back).click(function(){
+        self.show_card()
+    });
+    this.show_card = function(){
+        clickable = false; //sets clickable to false to prevent fast clicking
+        // var inside = $(card).prev(); //variable stores the information about the front of the card
+        this.back.hide(); //hides the back of the card
+        console.log('show card fired');
+        compare_cards(self.front); //uses the front of the card as a parameter to pass into the compare cards func
+    }
+}
 function MEMORY_MATCH(){
     var self = this;
     this.first_card=null;
@@ -27,6 +39,7 @@ function MEMORY_MATCH(){
             $(card_div).append(card_front); //appends the card fronts to a card area
             $(card_div).append(card_back); //appends the card backs on top of the card fronts
             $(game_area).append(card_div); //appends all of that to the game area
+            var card = new CARD(card_front,card_back);
         }
     };
     this.randomize_cards = function(array){
@@ -63,27 +76,42 @@ function MEMORY_MATCH(){
         self.total_matches = 0;
         $('.display_message').empty();
         self.append_cards_to_gameboard(); //creates a new game area
+    };
+    this.compare_cards = function(card){
+        if (self.first_card == null){
+            self.first_card = card; // if the first_card variable is null, it sets first_card to the card clicked
+            clickable = true;
+        }else if(self.second_card == null) {
+            self.second_card = card; // if the second_card variable is null, it sets second_card to the card clicked
+            if (self.first_card.attr('src') == self.second_card.attr('src')) {
+                cards_match(); // if the src attribute on both cards match, the cards match function is fired
+            } else {
+                cards_dont_match(); // if the src attribute on both cards dont match, the cards_dont_match function is fired
+            }
+        }
     }
 }
 $(document).ready(function(){
     game.append_cards_to_gameboard(); //appends cards to the gameboard
     $('.game_area').on('click','.card_back', function(){ //on clicking the back of the card it fires the show card function
-        if(clickable){ //if clickable is true, show_card will work, else nothing happens
-            show_card(this);
-        }
+        // if(clickable){ //if clickable is true, show_card will work, else nothing happens
+        //     card.show_card(this);
+        // }
     });
     $('button').click(function(){
         game.reset_game();
     })
 });
 
-function show_card(card){ //func to show the card front
-    clickable = false; //sets clickable to false to prevent fast clicking
-    var inside = $(card).prev(); //variable stores the information about the front of the card
-    $(card).hide(); //hides the back of the card
-    console.log('show card fired');
-    compare_cards(inside); //uses the front of the card as a parameter to pass into the compare cards func
-}
+
+
+// function show_card(card){ //func to show the card front
+//     clickable = false; //sets clickable to false to prevent fast clicking
+//     var inside = $(card).prev(); //variable stores the information about the front of the card
+//     $(card).hide(); //hides the back of the card
+//     console.log('show card fired');
+//     compare_cards(inside); //uses the front of the card as a parameter to pass into the compare cards func
+// }
 function compare_cards(card){
     if (game.first_card == null){
         game.first_card = card; // if the first_card variable is null, it sets first_card to the card clicked
