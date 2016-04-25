@@ -5,14 +5,16 @@ function CARD(front,back){
     this.front=front;
     this.back=back;
     $(this.back).click(function(){
-        self.show_card()
+        if(clickable){
+            self.show_card();
+        }
     });
     this.show_card = function(){
         clickable = false; //sets clickable to false to prevent fast clicking
         // var inside = $(card).prev(); //variable stores the information about the front of the card
         this.back.hide(); //hides the back of the card
         console.log('show card fired');
-        compare_cards(self.front); //uses the front of the card as a parameter to pass into the compare cards func
+        game.compare_cards(self.front); //uses the front of the card as a parameter to pass into the compare cards func
     }
 }
 function MEMORY_MATCH(){
@@ -84,76 +86,47 @@ function MEMORY_MATCH(){
         }else if(self.second_card == null) {
             self.second_card = card; // if the second_card variable is null, it sets second_card to the card clicked
             if (self.first_card.attr('src') == self.second_card.attr('src')) {
-                cards_match(); // if the src attribute on both cards match, the cards match function is fired
+                self.cards_match(); // if the src attribute on both cards match, the cards match function is fired
             } else {
-                cards_dont_match(); // if the src attribute on both cards dont match, the cards_dont_match function is fired
+                self.cards_dont_match(); // if the src attribute on both cards dont match, the cards_dont_match function is fired
             }
         }
+    };
+    this.cards_match = function(){
+        game.total_matches++;
+        if(game.total_matches != 9){
+            game.display_messages('Cards Match!');
+        }else{
+            game.display_messages('You Win!');
+        }
+        console.log('cards match');
+        var score = $('#score').text(); //sets a variable to the current score
+        score = Number(score); //changes the variable from a string to a number
+        score += 10; //adds 10 to the scure
+        $('#score').text(score); //sets the visible score to the new total
+        console.log(score);
+        self.first_card.next().removeClass('card_back'); //removes the card back class from the first card
+        self.second_card.next().removeClass('card_back'); //removes the card back class from the second card
+        self.first_card = null; //sets first card to null
+        self.second_card = null; //sets second card to null
+        clickable = true; //makes cards clickable again
+    };
+    this.cards_dont_match = function(){
+        game.display_messages('Cards don\'t match!');
+        console.log('cards dont match');
+        setTimeout(function(){
+            $('.card_back').show();
+            clickable = true;
+        },1000);
+        self.first_card = null;
+        self.second_card = null;
     }
 }
 $(document).ready(function(){
     game.append_cards_to_gameboard(); //appends cards to the gameboard
-    $('.game_area').on('click','.card_back', function(){ //on clicking the back of the card it fires the show card function
-        // if(clickable){ //if clickable is true, show_card will work, else nothing happens
-        //     card.show_card(this);
-        // }
-    });
     $('button').click(function(){
         game.reset_game();
     })
 });
-
-
-
-// function show_card(card){ //func to show the card front
-//     clickable = false; //sets clickable to false to prevent fast clicking
-//     var inside = $(card).prev(); //variable stores the information about the front of the card
-//     $(card).hide(); //hides the back of the card
-//     console.log('show card fired');
-//     compare_cards(inside); //uses the front of the card as a parameter to pass into the compare cards func
-// }
-function compare_cards(card){
-    if (game.first_card == null){
-        game.first_card = card; // if the first_card variable is null, it sets first_card to the card clicked
-        clickable = true;
-    }else if(game.second_card == null) {
-        game.second_card = card; // if the second_card variable is null, it sets second_card to the card clicked
-        if (game.first_card.attr('src') == game.second_card.attr('src')) {
-            cards_match(); // if the src attribute on both cards match, the cards match function is fired
-        } else {
-            cards_dont_match(); // if the src attribute on both cards dont match, the cards_dont_match function is fired
-        }
-    }
-}
-function cards_match(){ //func for when the cards match
-    game.total_matches++;
-    if(game.total_matches != 9){
-        game.display_messages('Cards Match!');
-    }else{
-        game.display_messages('You Win!');
-    }
-    console.log('cards match');
-    var score = $('#score').text(); //sets a variable to the current score
-    score = Number(score); //changes the variable from a string to a number
-    score += 10; //adds 10 to the scure
-    $('#score').text(score); //sets the visible score to the new total
-    console.log(score);
-    game.first_card.next().removeClass('card_back'); //removes the card back class from the first card
-    game.second_card.next().removeClass('card_back'); //removes the card back class from the second card
-    game.first_card = null; //sets first card to null
-    game.second_card = null; //sets second card to null
-    clickable = true; //makes cards clickable again
-}
-
-function cards_dont_match(){
-    game.display_messages('Cards don\'t match!');
-    console.log('cards dont match');
-    setTimeout(function(){
-        $('.card_back').show();
-        clickable = true;
-    },1000);
-    game.first_card = null;
-    game.second_card = null;
-}
 
 var game = new MEMORY_MATCH();
