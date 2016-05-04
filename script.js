@@ -22,6 +22,7 @@ function MEMORY_MATCH(){
     this.first_card=null;
     this.second_card=null;
     this.total_matches=0;
+    this.score = 0;
     this.append_cards_to_gameboard =  function(){
         var card_fronts=['images/bill.png','images/bill.png','images/dipper.png','images/dipper.png','images/ford.png','images/ford.png','images/gideon.png','images/gideon.png','images/gnome.png','images/gnome.png','images/mabel.jpg','images/mabel.jpg','images/soos.png','images/soos.png','images/unclestan.png','images/unclestan.png','images/wendy.png','images/wendy.png'];
         var card_fronts = self.randomize_cards(card_fronts); //randomizes the card front array
@@ -75,6 +76,7 @@ function MEMORY_MATCH(){
         self.second_card = null;
         $('.game_area').empty(); //empties the game area
         $('#score').text('0'); // sets the score back to 0
+        self.score = 0;
         self.total_matches = 0;
         $('.display_message').empty();
         self.append_cards_to_gameboard(); //creates a new game area
@@ -100,10 +102,11 @@ function MEMORY_MATCH(){
             game.display_messages('You Win!');
         }
         console.log('cards match');
-        var score = $('#score').text(); //sets a variable to the current score
-        score = Number(score); //changes the variable from a string to a number
-        score += 10; //adds 10 to the scure
-        $('#score').text(score); //sets the visible score to the new total
+        self.score += 10;
+        // var score = $('#score').text(); //sets a variable to the current score
+        // score = Number(score); //changes the variable from a string to a number
+        // score += 10; //adds 10 to the scure
+        $('#score').text(self.score); //sets the visible score to the new total
         console.log(score);
         self.first_card.next().removeClass('card_back'); //removes the card back class from the first card
         self.second_card.next().removeClass('card_back'); //removes the card back class from the second card

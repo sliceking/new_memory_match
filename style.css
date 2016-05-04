@@ -94,9 +94,11 @@ body{
 }
 .display_message{
     background-color: red;
+    border:5px solid black;
     display:inline-block;
     position:absolute;
-    left:50%;
-    bottom:5%;
+    left:43%;
+    height:90px;
+    bottom:1%;
     z-index: 10;
 }
