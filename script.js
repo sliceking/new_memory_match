@@ -6,7 +6,7 @@ function CARD(front,back){
     this.back=back;
     $(this.back).click(function(){
         if(clickable){
-            self.show_card();
+           self.show_card();
         }
     });
     this.show_card = function(){
