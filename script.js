@@ -23,6 +23,7 @@ function MEMORY_MATCH(){
     this.second_card=null;
     this.total_matches=0;
     this.score = 0;
+    this.attempts = 0;
     this.append_cards_to_gameboard =  function(){
         var card_fronts=['images/bill.png','images/bill.png','images/dipper.png','images/dipper.png','images/ford.png','images/ford.png','images/gideon.png','images/gideon.png','images/gnome.png','images/gnome.png','images/mabel.jpg','images/mabel.jpg','images/soos.png','images/soos.png','images/unclestan.png','images/unclestan.png','images/wendy.png','images/wendy.png'];
         var card_fronts = self.randomize_cards(card_fronts); //randomizes the card front array
@@ -80,6 +81,8 @@ function MEMORY_MATCH(){
         self.total_matches = 0;
         $('.display_message').empty();
         self.append_cards_to_gameboard(); //creates a new game area
+        self.attempts= 0;
+        $('#accuracy').text('0.0 %')
     };
     this.compare_cards = function(card){
         if (self.first_card == null){
@@ -88,9 +91,13 @@ function MEMORY_MATCH(){
         }else if(self.second_card == null) {
             self.second_card = card; // if the second_card variable is null, it sets second_card to the card clicked
             if (self.first_card.attr('src') == self.second_card.attr('src')) {
+                self.attempts+=1;
                 self.cards_match(); // if the src attribute on both cards match, the cards match function is fired
+                self.accuracy_update();
             } else {
+                self.attempts+=1;
                 self.cards_dont_match(); // if the src attribute on both cards dont match, the cards_dont_match function is fired
+                self.accuracy_update();
             }
         }
     };
@@ -123,6 +130,11 @@ function MEMORY_MATCH(){
         },1000);
         self.first_card = null;
         self.second_card = null;
+    };
+    this.accuracy_update = function(){
+        var accuracy_element = $('#accuracy');
+        accuracy_element.text(((self.total_matches / self.attempts) * 100).toPrecision(2) + " %");
+
     }
 }
 $(document).ready(function(){
