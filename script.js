@@ -82,6 +82,7 @@ function MEMORY_MATCH(){
         $('.display_message').empty();
         self.append_cards_to_gameboard(); //creates a new game area
         self.attempts= 0;
+        $('#attempts').text(0);
         $('#accuracy').text('0.0 %')
     };
     this.compare_cards = function(card){
@@ -91,11 +92,11 @@ function MEMORY_MATCH(){
         }else if(self.second_card == null) {
             self.second_card = card; // if the second_card variable is null, it sets second_card to the card clicked
             if (self.first_card.attr('src') == self.second_card.attr('src')) {
-                self.attempts+=1;
+                self.update_attempts();
                 self.cards_match(); // if the src attribute on both cards match, the cards match function is fired
                 self.accuracy_update();
             } else {
-                self.attempts+=1;
+                self.update_attempts();
                 self.cards_dont_match(); // if the src attribute on both cards dont match, the cards_dont_match function is fired
                 self.accuracy_update();
             }
@@ -134,7 +135,11 @@ function MEMORY_MATCH(){
     this.accuracy_update = function(){
         var accuracy_element = $('#accuracy');
         accuracy_element.text(((self.total_matches / self.attempts) * 100).toPrecision(2) + " %");
-
+    };
+    this.update_attempts = function(){
+        self.attempts+=1;
+        var attempts = $('#attempts');
+        attempts.text(self.attempts);
     }
 }
 $(document).ready(function(){
