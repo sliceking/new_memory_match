@@ -6,7 +6,6 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    color:white;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -29,13 +28,16 @@ body{
     display: inline-block;
 }
 .header ul{
-    display:inline-block;
+    display:flex;
+    flex-direction: row;
     list-style: none;
-    position: relative;
-    transform: translateY(50%);
-    top:-60%;
+    justify-content: space-around;
+    #align-content: center;
+    #position: relative;
+    #transform: translateY(50%);
+    #top:-60%;
     font-size:35px;
-    left:20vw;
+    #left:20vw;
     color: #fff9f8;
 }
 
@@ -100,4 +102,7 @@ body{
     height:90px;
     bottom:1%;
     z-index: 10;
+}
+.scoreboard button{
+    color:black;
 }

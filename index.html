@@ -2,15 +2,21 @@
     <html>
         <head>
             <title>Memory Match</title>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+            <!-- jQuery library -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+            <!-- Latest compiled JavaScript -->
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
             <link href="style.css" type="text/css" rel="stylesheet"/>
             <script src="script.js"></script>
         </head>
         <body>
             <div class="header game_item">
-                <img class='logo' src="./images/logo.png"/>
+                <!--<img class='logo' src="./images/logo.png"/>-->
                 <ul>
                     <li>Gravity Falls Memory Match</li>
+                    <li><button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#how_to_play_modal">How to Play</button></li>
                     <!--<li>Home</li>-->
                     <!--<li>About</li>-->
                     <!--<li>High Score</li>-->
@@ -19,7 +25,7 @@
             <div class="main">
                 <div class="scoreboard game_item">
                     <ul>
-                        <li><button>Reset</button></li>
+                        <li><button class="btn btn-success btn-md">Reset</button></li>
                         <!--<li>Timer</li>-->
                         <!--<li id="timer">0</li>-->
                         <li>Score</li>
@@ -32,6 +38,36 @@
                 </div>
                 <div class="game_area game_item">
                     
+                </div>
+            </div>
+
+
+            <!-- Modal -->
+            <div id="how_to_play_modal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <!--<div class="modal-header">-->
+                            <!--&lt;!&ndash;<button type="button" class="close" data-dismiss="modal">&times;</button>&ndash;&gt;-->
+                            <!--<h4 class="modal-title">Modal Header</h4>-->
+                        <!--</div>-->
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h1>Gravity Falls Memory Match</h1>
+                            <h2>How to Play</h2>
+                            <h4>Object of the Game</h4>
+                            <ul>
+                                <li>Click the cards to reveal their faces on the other side.</li>
+                                <li>Try to match pairs of cards to earn points.</li>
+                                <li>Match all 9 pairs of cards together to win the game!</li>
+                            </ul>
+                        </div>
+                        <!--<div class="modal-footer">-->
+                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                        <!--</div>-->
+                    </div>
+
                 </div>
             </div>
         </body>
