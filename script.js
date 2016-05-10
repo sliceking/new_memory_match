@@ -32,16 +32,21 @@ function MEMORY_MATCH(){
             var card_div = $('<div>',{ // divs to contain the cards
                 class:'card'
             });
+            var card_front_div = $('<div>');
             var card_back = $('<img>',{ //card back images
                 src:'images/cardBack.jpg',
                 class:'card_back'
             });
+            var card_back_div = $('<div>');
             var card_front = $('<img>',{ //card front images
                 src:card_fronts[i],
                 class:'card_front'
             });
-            $(card_div).append(card_front); //appends the card fronts to a card area
-            $(card_div).append(card_back); //appends the card backs on top of the card fronts
+            $(card_back_div).append(card_back);
+            $(card_front_div).append(card_front);
+            $(card_div).append(card_front_div).append(card_back_div);
+            // $(card_div).append(card_front); //appends the card fronts to a card area
+            // $(card_div).append(card_back); //appends the card backs on top of the card fronts
             $(game_area).append(card_div); //appends all of that to the game area
             var card = new CARD(card_front,card_back);
         }
