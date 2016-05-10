@@ -101,10 +101,8 @@ body{
     position:absolute;
     width:100px;
     height:140px;
-}
-.card_front, .card_back{
-    border:3px solid black;
     border-radius: 10%;
+    border:3px solid black;
 }
 .display_message{
     background-color: red;
