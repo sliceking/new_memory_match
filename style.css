@@ -31,13 +31,12 @@ body{
     display:flex;
     flex-direction: row;
     list-style: none;
+    align-items: center;
     justify-content: space-around;
-    #align-content: center;
-    #position: relative;
-    #transform: translateY(50%);
-    #top:-60%;
-    font-size:35px;
-    #left:20vw;
+    font-size:2vw;
+    position:relative;
+    top:50%;
+    transform: translateY(-50%);
     color: #fff9f8;
 }
 
@@ -52,7 +51,7 @@ body{
     height:70%;
     border-radius: 50px;
     margin:5px;
-    font-size:18px;
+    font-size:1.2vw;
 }
 .scoreboard ul{
     list-style: none;
@@ -63,6 +62,7 @@ body{
 }
 .scoreboard li{
     margin:15px 0;
+    color:white;
 }
 .game_area{
     margin:1%;
@@ -104,5 +104,6 @@ body{
     z-index: 10;
 }
 .scoreboard button{
-    color:black;
+    color:white;
+    font-size:1.2vw
 }
