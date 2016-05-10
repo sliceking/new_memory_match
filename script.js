@@ -1,7 +1,8 @@
 
 var clickable=true; //global variable to prevent rapid clicking when cards don't match
-function CARD(front,back){
+function CARD(card_div,front,back){
     var self = this;
+    this.element = card_div;
     this.front=front;
     this.back=back;
     $(this.back).click(function(){
@@ -12,7 +13,9 @@ function CARD(front,back){
     this.show_card = function(){
         clickable = false; //sets clickable to false to prevent fast clicking
         // var inside = $(card).prev(); //variable stores the information about the front of the card
-        this.back.hide(); //hides the back of the card
+        // this.back.hide(); //hides the back of the card
+        this.front.addClass('front_flip');
+        this.back.addClass('back_flip');
         console.log('show card fired');
         game.compare_cards(self.front); //uses the front of the card as a parameter to pass into the compare cards func
     }
@@ -52,7 +55,7 @@ function MEMORY_MATCH(){
             // $(card_div).append(card_front); //appends the card fronts to a card area
             // $(card_div).append(card_back); //appends the card backs on top of the card fronts
             $(game_area).append(card_div); //appends all of that to the game area
-            var card = new CARD(card_front,card_back);
+            var card = new CARD(card_div,card_front_div,card_back_div);
         }
     };
     this.randomize_cards = function(array){
