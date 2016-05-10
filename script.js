@@ -33,8 +33,8 @@ function MEMORY_MATCH(){
                 class:'card'
             });
             var card_back = $('<img>',{ //card back images
-                src:'images/cardBack.jpg',
-                class:'card_back'
+                src:'images/cardBack.jpg'
+
             });
             var card_back_div = $('<div>',{
                 class:'card_back'
@@ -43,8 +43,8 @@ function MEMORY_MATCH(){
                 class:'card_front'
             });
             var card_front = $('<img>',{ //card front images
-                src:card_fronts[i],
-                class:'card_front'
+                src:card_fronts[i]
+
             });
             $(card_back_div).append(card_back);
             $(card_front_div).append(card_front);

@@ -103,7 +103,7 @@ body{
     height:140px;
 }
 .card_front, .card_back{
-    border:3px solid black;
+    #border:3px solid black;
     border-radius: 10%;
 }
 .display_message{
@@ -123,24 +123,24 @@ body{
 .card > .card_back{
     position:absolute;
     transform:perspective(600px) rotateY(0deg);
-    background:#BBB;
+    #background:#BBB;
     width:240px;
     height:200px;
     border-radius:7px;
     backface-visibility: hidden;
     transition:transform .5s linear 0s;
-    border:5px solid black;
+    #border:5px solid black;
 }
 .card > .card_front{
     position:absolute;
     transform:perspective(600px) rotateY(180deg);
-    background:#FC0;
+    #background:#FC0;
     width:240px;
     height:200px;
     border-radius:7px;
     backface-visibility: hidden;
     transition:transform .5s linear 0s;
-    border:5px solid black;
+    #border:5px solid black;
 }
 .card:hover > .card_back{
     transform: perspective(600px) rotateY(-180deg);
