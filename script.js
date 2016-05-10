@@ -1,6 +1,6 @@
 
 var clickable=true; //global variable to prevent rapid clicking when cards don't match
-function CARD(card_div,front,back){
+function CARD(front,back){
     var self = this;
     this.front=front;
     this.back=back;
@@ -56,7 +56,7 @@ function MEMORY_MATCH(){
             // $(card_div).append(card_front); //appends the card fronts to a card area
             // $(card_div).append(card_back); //appends the card backs on top of the card fronts
             $(game_area).append(card_div); //appends all of that to the game area
-            var card = new CARD(card_div,card_front_div,card_back_div);
+            var card = new CARD(card_front_div,card_back_div);
         }
     };
     this.randomize_cards = function(array){
