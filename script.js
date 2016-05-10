@@ -32,12 +32,16 @@ function MEMORY_MATCH(){
             var card_div = $('<div>',{ // divs to contain the cards
                 class:'card'
             });
-            var card_front_div = $('<div>');
             var card_back = $('<img>',{ //card back images
                 src:'images/cardBack.jpg',
                 class:'card_back'
             });
-            var card_back_div = $('<div>');
+            var card_back_div = $('<div>',{
+                class:'card_back'
+            });
+            var card_front_div = $('<div>',{
+                class:'card_front'
+            });
             var card_front = $('<img>',{ //card front images
                 src:card_fronts[i],
                 class:'card_front'
