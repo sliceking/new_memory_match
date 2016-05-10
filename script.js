@@ -176,7 +176,7 @@ $(document).ready(function(){
     game.append_cards_to_gameboard(); //appends cards to the gameboard
     $('button').click(function(){
         game.reset_game();
-    })
+    });
     $("#how_to_play_modal").modal('show')
 });
 
