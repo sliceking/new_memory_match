@@ -190,3 +190,4 @@ var theme = new Audio('./images/gf_theme.mp3');
 var card_flip1 = new Audio('./images/card_flip1.wav');
 var card_flip2 = new Audio('./images/card_flip1.wav');
 var card_flip_back = new Audio('./images/card_flip2.wav');
+card_flip_back.playbackRate = 2;
